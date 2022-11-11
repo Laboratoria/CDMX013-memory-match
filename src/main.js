@@ -1,10 +1,20 @@
 import App from './components/App.js';
 import pokemon from './data/pokemon/pokemon.js';
 import dataPokemon from "./data/pokemon/pokemon.js";
+import mezclar from './utils/shuffle.js';
+
 const root = document.getElementById('root');
 const data = [...dataPokemon.items,...dataPokemon.items]
 
-data.forEach ((pokemon)=>{
+
+//numeros = numeros.sort (function(){return Math.random() -0.3})
+
+const random = Math.floor(Math.random() * data.length);
+//const shuffleCards = Math.floor(Math.floor) * data.length);
+console.log();
+
+
+mezclar(data).forEach ((pokemon)=>{
 
   const div = document.createElement("div");
   div.classList = "container"
@@ -28,12 +38,13 @@ data.forEach ((pokemon)=>{
       countCard.push(div);
       console.log(namesPokemons);
       clickedCard.push(divBack); 
-
+      
+    
  });
 
  
     
- div.append(imagePoke, namesPokemons,divBack);
+ div.append(imagePoke, namesPokemons,divBack,);
 
   root.appendChild (div);
 });

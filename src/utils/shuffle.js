@@ -1,14 +1,14 @@
 function shuffle(array) {
     let currentIndex = array.length,  randomIndex;
   
-    // While there remain elements to shuffle.
+    // se ejecuta un bucle 
     while (currentIndex != 0) {
   
-      // Pick a remaining element.
+      // funcion de mezclar tarjetas
       randomIndex = Math.floor(Math.random() * currentIndex);
-      currentIndex--;
+      currentIndex--; //resta la unidad
   
-      // And swap it with the current element.
+      // 
       [array[currentIndex], array[randomIndex]] = [
         array[randomIndex], array[currentIndex]];
     }
@@ -18,3 +18,10 @@ function shuffle(array) {
 export default shuffle; 
 //exporta un unico valor 
 //puedes cambiar el nombre de la funcion solo al importarla
+
+
+//Comparar las 2 cartas dentro de la variable
+//Si son iguales hacer que permanezcan descubiertas
+//Y permitir destapar otras 2
+//Si son diferentes volver a cubrir
+//Y permitir destapar otras 2

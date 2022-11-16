@@ -5,7 +5,8 @@ import mezclar from './utils/shuffle.js';
 
 const root = document.getElementById('root');
 const data = [...dataPokemon.items,...dataPokemon.items]
-
+let clickedCards = [];
+let countCards = [];
 
 //numeros = numeros.sort (function(){return Math.random() -0.3})
 
@@ -29,26 +30,59 @@ mezclar(data).forEach ((pokemon)=>{
   namesPokemons.textContent= (pokemon.id)
    const imagePoke = document.createElement('img');
   imagePoke.setAttribute("src", pokemon.image);
-
+  
+  //funcion hace que solo se destapen dos cartas
   divBack.addEventListener('click',()=>{
-      divBack.style.display = "none" //propiedad que se le dio en css la quite al dar click
-      
-      let clickedCard = [];
-      let countCard = [];
-      countCard.push(div);
-      console.log(namesPokemons);
-      clickedCard.push(divBack); 
-      
-    
- });
+    if (clickedCards.length === 2 ){
+    clickedCards[0].style.display = "block"
+    clickedCards[1].style.display= "block"
+    clickedCards = [];
+  
+  } else{
 
- 
+  countCards.push(div);
+  console.log(namesPokemons);
+  clickedCards.push(divBack); 
+  console.log(clickedCards)
+  divBack.style.display = "none" //propiedad que se le dio en css la quite al dar click
+}
+ if(clickedCards[0].setAttribute(dataPokemon.id) === clickedCards[1].setAttribute(dataPokemon.id)){
+  //clickedCards[0].style.display = "block"
+  //clickedCards[1].style.display= "block"
+  //clickedCards = [];
+  console.log("match")
     
- div.append(imagePoke, namesPokemons,divBack,);
+} else{
 
-  root.appendChild (div);
+  countCards.push(div);
+  console.log(namesPokemons);
+  clickedCards.push(divBack); 
+  console.log(clickedCards)
+  divBack.style.display = "block" //propiedad que se le dio en css la quite al dar click
+}
+
+
+  
+       
+        
+       
+  
+  //si ya tengo destapadas esas dos tarjetas saber si hacen match y si no taparlas de nuevo 
+  //van
+      
+
+
+
 });
 
+
+   
+
+div.append(imagePoke, namesPokemons,divBack,);
+
+  root.appendChild (div);
+
+});  
 
 
 // .getElementsByClassName("") imprime 
@@ -61,5 +95,4 @@ mezclar(data).forEach ((pokemon)=>{
     //imagePoke.push('pokemon'+ root);
 
   
-  //divBack.addEventListener("click", () => {
-    
+  //divBack.addEventListener("click", () => 
